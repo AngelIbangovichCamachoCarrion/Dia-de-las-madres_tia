@@ -1,0 +1,193 @@
+body {
+  margin: 0;
+  height: 100dvh;
+  background: linear-gradient(-45deg, #ffeaf4, #e0ffff, #ffe0e5, #ffffff);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0; /* quitamos padding para que no empuje hacia abajo */
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__inner {
+  width: 100%;
+  max-width: 380px;
+  min-height: 320px;
+  height: auto;
+  align-self: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.9s ease-in-out;
+  border-radius: 20px;
+}
+
+.card.flipped .card__inner {
+  transform: rotateY(180deg) scale(1.02);
+}
+
+.card__front, .card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  text-align: center;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__back {
+  transform: rotateY(180deg);
+  background-image: linear-gradient(135deg, #ffe0e5 0%, #fffafc 100%);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: #ff69b4;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+}
+
+.message {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.4rem;
+  color: #d63384;
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 20px;
+  background: #ff69b4;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.btn:hover {
+  background: #ff1493;
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+canvas#hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff69b4;
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 999;
+}
+
+
+
+@media (max-width: 600px) {
+  .card {
+    width: 90%; 
+    padding: 20px 0;
+  }
+
+  .card__inner {
+    width: 100%;  
+    height: auto;
+  }
+
+  .card__front, .card__back {
+    padding: 20px;
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+  }
+
+  .signature {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+}
+
+
+
+
